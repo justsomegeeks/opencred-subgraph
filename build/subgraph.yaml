@@ -1,6 +1,6 @@
 specVersion: 0.0.2
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum/contract
     name: OpenCredFactory
@@ -17,10 +17,10 @@ dataSources:
         - OwnershipTransferred
       abis:
         - name: OpenCredFactory
-          file: ./abis/OpenCredFactory.json
+          file: OpenCredFactory/abis/OpenCredFactory.json
       eventHandlers:
         - event: BootcampCreated(indexed address,indexed address,string)
           handler: handleBootcampCreated
         - event: OwnershipTransferred(indexed address,indexed address)
           handler: handleOwnershipTransferred
-      file: ./src/mapping.ts
+      file: OpenCredFactory/OpenCredFactory.wasm
