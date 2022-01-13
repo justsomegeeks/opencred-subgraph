@@ -1,4 +1,3 @@
-import { ipfs, log } from "@graphprotocol/graph-ts";
 import {
   BootcampCreated,
   OwnershipTransferred,
@@ -17,10 +16,6 @@ export function handleBootcampCreated(event: BootcampCreated): void {
 
   // Entities can be written to the store with `.save()`
   entity.save();
-
-  let ipfsData = ipfs.cat(event.params._bootcampURI);
-  log.debug("Time: {}", [event.block.timestamp.toString()]);
-  log.debug("IpfsData: {}", [ipfsData.toString()]);
 }
 
 export function handleOwnershipTransferred(event: OwnershipTransferred): void {}
