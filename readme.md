@@ -5,7 +5,7 @@
     2. cd graph-node/docker
     3. ./setup.sh
     4. change docker-compose.yml line 20 `host.docker.internal` to Host IP you get while running ./setup.sh (**Note:** In my case its `172:18.0.1`) 
-    5. start a local node (```hh node``` || ```ganache-cli```) (**Note:** Make sure you have installed [hardhat shorthand](https://hardhat.org/guides/shorthand.html))
+    5. start a local node (```hh node --hostname 0.0.0.0``` || ```ganache-cli -h 0.0.0.0```) (**Note:** Make sure you have installed [hardhat shorthand](https://hardhat.org/guides/shorthand.html))
     6. docker-compose up 
 
 * ### deploy contract
@@ -18,13 +18,12 @@
   3. run `yarn codegen`
   4. run `yarn build`
   5. run `yarn create-local`
-  6. run `yarn deploy`
+  6. run `yarn deploy-local`
 
-* ### Run create bootcamp script
-  1. from opencred-contracts repo run `hh run scripts/deployContracts.ts --network localhost`
-
-* ### run event emitter script
+* ### Run scripts that makes contract to emit events
   1. Replace `scripts/createBootcamp.ts` line 5 with your OpenCredFactory deployed address 
+  2. from opencred-contracts repo run `hh run scripts/createBootcamp.ts --network localhost`
+
 
 **Note:** got to `http://localhost:8000/subgraphs/id/yourSubgraphID/graphql` and query 
 
