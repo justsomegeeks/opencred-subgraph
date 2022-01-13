@@ -23,7 +23,7 @@ export class BootcampCreated__Params {
     this._event = event;
   }
 
-  get _owner(): Address {
+  get owner(): Address {
     return this._event.parameters[0].value.toAddress();
   }
 
@@ -31,7 +31,7 @@ export class BootcampCreated__Params {
     return this._event.parameters[1].value.toAddress();
   }
 
-  get _bootcampURI(): string {
+  get bootcampURI(): string {
     return this._event.parameters[2].value.toString();
   }
 }

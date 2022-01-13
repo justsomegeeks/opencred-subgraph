@@ -10,9 +10,9 @@ export function handleBootcampCreated(event: BootcampCreated): void {
   // TODO: Handle ipfs
   // Entity fields can be set based on event parameters
 
-  entity.owner = event.params._owner;
+  entity.owner = event.params.owner;
   entity.address = event.params.bootcamp;
-  entity.uri = event.params._bootcampURI;
+  entity.uri = event.params.bootcampURI;
 
   // Entities can be written to the store with `.save()`
   entity.save();
