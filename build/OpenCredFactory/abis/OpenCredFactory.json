@@ -16,7 +16,7 @@
       {
         "indexed": true,
         "internalType": "address",
-        "name": "_owner",
+        "name": "owner",
         "type": "address"
       },
       {
@@ -28,7 +28,7 @@
       {
         "indexed": false,
         "internalType": "string",
-        "name": "_bootcampURI",
+        "name": "bootcampURI",
         "type": "string"
       }
     ],

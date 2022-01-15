@@ -6,7 +6,7 @@ dataSources:
     name: OpenCredFactory
     network: mainnet
     source:
-      address: "0xd86EB75611a6155687a2c9C9E7a876495654718B"
+      address: "0xE3C6158a2F04f08F39f99FAC450AC91aF5b5D7DD"
       abi: OpenCredFactory
     mapping:
       kind: ethereum/events
@@ -23,4 +23,33 @@ dataSources:
           handler: handleBootcampCreated
         - event: OwnershipTransferred(indexed address,indexed address)
           handler: handleOwnershipTransferred
-      file: ./src/mapping.ts
+      file: ./src/openCredFactory.ts
+
+  - kind: ethereum/contract
+    name: OpenCred
+    network: mainnet
+    source:
+      abi: OpenCred
+      startBlock: 0
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - CourseCreated
+        - Graduate
+        - OwnershipTransferred
+        - Review
+      abis:
+        - name: OpenCred
+          file: ./abis/OpenCred.json
+      eventHandlers:
+        - event: CourseCreated(indexed address,indexed uint256,string)
+          handler: handleCourseCreated
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Graduate(indexed address,indexed uint256,bytes32,string)
+          handler: handleGraduate
+        - event: Review(indexed address,indexed address,indexed uint256,string)
+          handler: handleReview
+      file: ./src/openCred.ts
