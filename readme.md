@@ -23,6 +23,8 @@
 * ### Run scripts that makes contract to emit events
   1. Replace `scripts/createBootcamp.ts` line 5 with your OpenCredFactory deployed address 
   2. from opencred-contracts repo run `hh run scripts/createBootcamp.ts --network localhost`
+  3. from opencred-contracts repo run `hh run scripts/callCredFunctions.ts --network localhost`
+
 
 
 **Note:** got to `http://localhost:8000/subgraphs/id/yourSubgraphID/graphql` and query 
