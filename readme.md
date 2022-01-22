@@ -23,12 +23,14 @@
 * ### Run scripts that makes contract to emit events
   1. Replace `scripts/createBootcamp.ts` line 5 with your OpenCredFactory deployed address 
   2. from opencred-contracts repo run `hh run scripts/createBootcamp.ts --network localhost`
-  3. from opencred-contracts repo run `hh run scripts/callCredFunctions.ts --network localhost`
+  3. Replace `line 8` of `scripts/callCredFunctions.ts` with any of the address of bootcamp emitted by `createBootcamp.ts`
+  4. from opencred-contracts repo run `hh run scripts/callCredFunctions.ts --network localhost`
 
 
 
 **Note:** got to `http://localhost:8000/subgraphs/id/yourSubgraphID/graphql` and query 
 
+* For Bootcamps
 ```javascript
 {
   bootcamps{
@@ -36,4 +38,28 @@
   }
 }
 ```
-Wallah! your emitted events has been indexed 
+* For Reviews
+```javascript
+{
+reviews{
+  uri,reviewer, bootcampAddress
+}
+}
+```
+* For Courses
+```javascript
+{
+courses{
+  uri, bootcampAddress, courseId
+}
+}
+```
+* For Graduates
+```javascript
+{
+graduates{
+  uri, bootcampAddress, courseId, root
+}
+}
+```
+Cheers! your emitted events has been indexed 

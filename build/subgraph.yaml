@@ -12,32 +12,29 @@ dataSources:
       kind: ethereum/events
       apiVersion: 0.0.4
       language: wasm/assemblyscript
+      file: OpenCredFactory/OpenCredFactory.wasm
       entities:
         - BootcampCreated
-        - OwnershipTransferred
       abis:
         - name: OpenCredFactory
           file: OpenCredFactory/abis/OpenCredFactory.json
       eventHandlers:
         - event: BootcampCreated(indexed address,indexed address,string)
           handler: handleBootcampCreated
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
-      file: OpenCredFactory/OpenCredFactory.wasm
-  - kind: ethereum/contract
-    name: OpenCred
+templates:
+  - name: OpenCred
+    kind: ethereum/contract
     network: mainnet
     source:
       abi: OpenCred
-      startBlock: 0
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
       language: wasm/assemblyscript
+      file: templates/OpenCred/OpenCred.wasm
       entities:
-        - CourseCreated
+        - Course
         - Graduate
-        - OwnershipTransferred
         - Review
       abis:
         - name: OpenCred
@@ -45,10 +42,7 @@ dataSources:
       eventHandlers:
         - event: CourseCreated(indexed address,indexed uint256,string)
           handler: handleCourseCreated
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
         - event: Graduate(indexed address,indexed uint256,bytes32,string)
           handler: handleGraduate
         - event: Review(indexed address,indexed address,indexed uint256,string)
           handler: handleReview
-      file: OpenCred/OpenCred.wasm
