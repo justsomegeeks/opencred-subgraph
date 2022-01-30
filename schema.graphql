@@ -3,7 +3,9 @@ type Bootcamp @entity {
   owner: Bytes!
   address: Bytes! # address
   uri: String!
+  courses: [Course!]
 }
+
 type Review @entity {
   id: ID!
   reviewer: Bytes!
@@ -17,6 +19,8 @@ type Course @entity {
   bootcampAddress: Bytes!
   courseId: BigInt!
   uri: String!
+  reviews: [Review!]
+  graduates: [Graduate!]
 }
 
 type Graduate @entity {

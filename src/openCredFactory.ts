@@ -11,6 +11,7 @@ export function handleBootcampCreated(event: BootcampCreated): void {
   bootcamp.owner = event.params.owner;
   bootcamp.address = event.params.bootcamp;
   bootcamp.uri = event.params.bootcampURI;
+  bootcamp.courses = [];
 
   // Entities can be written to the store with `.save()`
   bootcamp.save();

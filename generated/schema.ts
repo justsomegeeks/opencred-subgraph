@@ -68,6 +68,23 @@ export class Bootcamp extends Entity {
   set uri(value: string) {
     this.set("uri", Value.fromString(value));
   }
+
+  get courses(): Array<string> | null {
+    let value = this.get("courses");
+    if (value === null || value.kind == ValueKind.NULL) {
+      return null;
+    } else {
+      return value.toStringArray();
+    }
+  }
+
+  set courses(value: Array<string> | null) {
+    if (value === null) {
+      this.unset("courses");
+    } else {
+      this.set("courses", Value.fromStringArray(value as Array<string>));
+    }
+  }
 }
 
 export class Review extends Entity {
@@ -192,6 +209,40 @@ export class Course extends Entity {
 
   set uri(value: string) {
     this.set("uri", Value.fromString(value));
+  }
+
+  get reviews(): Array<string> | null {
+    let value = this.get("reviews");
+    if (value === null || value.kind == ValueKind.NULL) {
+      return null;
+    } else {
+      return value.toStringArray();
+    }
+  }
+
+  set reviews(value: Array<string> | null) {
+    if (value === null) {
+      this.unset("reviews");
+    } else {
+      this.set("reviews", Value.fromStringArray(value as Array<string>));
+    }
+  }
+
+  get graduates(): Array<string> | null {
+    let value = this.get("graduates");
+    if (value === null || value.kind == ValueKind.NULL) {
+      return null;
+    } else {
+      return value.toStringArray();
+    }
+  }
+
+  set graduates(value: Array<string> | null) {
+    if (value === null) {
+      this.unset("graduates");
+    } else {
+      this.set("graduates", Value.fromStringArray(value as Array<string>));
+    }
   }
 }
 
