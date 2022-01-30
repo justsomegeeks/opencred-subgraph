@@ -68,6 +68,258 @@ export class Bootcamp extends Entity {
   set uri(value: string) {
     this.set("uri", Value.fromString(value));
   }
+
+  get courses(): Array<string> | null {
+    let value = this.get("courses");
+    if (value === null || value.kind == ValueKind.NULL) {
+      return null;
+    } else {
+      return value.toStringArray();
+    }
+  }
+
+  set courses(value: Array<string> | null) {
+    if (value === null) {
+      this.unset("courses");
+    } else {
+      this.set("courses", Value.fromStringArray(value as Array<string>));
+    }
+  }
+}
+
+export class Review extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(id !== null, "Cannot save Review entity without an ID");
+    assert(
+      id.kind == ValueKind.STRING,
+      "Cannot save Review entity with non-string ID. " +
+        'Considering using .toHex() to convert the "id" to a string.'
+    );
+    store.set("Review", id.toString(), this);
+  }
+
+  static load(id: string): Review | null {
+    return store.get("Review", id) as Review | null;
+  }
+
+  get id(): string {
+    let value = this.get("id");
+    return value.toString();
+  }
+
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get reviewer(): Bytes {
+    let value = this.get("reviewer");
+    return value.toBytes();
+  }
+
+  set reviewer(value: Bytes) {
+    this.set("reviewer", Value.fromBytes(value));
+  }
+
+  get bootcampAddress(): Bytes {
+    let value = this.get("bootcampAddress");
+    return value.toBytes();
+  }
+
+  set bootcampAddress(value: Bytes) {
+    this.set("bootcampAddress", Value.fromBytes(value));
+  }
+
+  get uri(): string {
+    let value = this.get("uri");
+    return value.toString();
+  }
+
+  set uri(value: string) {
+    this.set("uri", Value.fromString(value));
+  }
+
+  get courseId(): BigInt {
+    let value = this.get("courseId");
+    return value.toBigInt();
+  }
+
+  set courseId(value: BigInt) {
+    this.set("courseId", Value.fromBigInt(value));
+  }
+}
+
+export class Course extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(id !== null, "Cannot save Course entity without an ID");
+    assert(
+      id.kind == ValueKind.STRING,
+      "Cannot save Course entity with non-string ID. " +
+        'Considering using .toHex() to convert the "id" to a string.'
+    );
+    store.set("Course", id.toString(), this);
+  }
+
+  static load(id: string): Course | null {
+    return store.get("Course", id) as Course | null;
+  }
+
+  get id(): string {
+    let value = this.get("id");
+    return value.toString();
+  }
+
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get bootcampAddress(): Bytes {
+    let value = this.get("bootcampAddress");
+    return value.toBytes();
+  }
+
+  set bootcampAddress(value: Bytes) {
+    this.set("bootcampAddress", Value.fromBytes(value));
+  }
+
+  get courseId(): BigInt {
+    let value = this.get("courseId");
+    return value.toBigInt();
+  }
+
+  set courseId(value: BigInt) {
+    this.set("courseId", Value.fromBigInt(value));
+  }
+
+  get uri(): string {
+    let value = this.get("uri");
+    return value.toString();
+  }
+
+  set uri(value: string) {
+    this.set("uri", Value.fromString(value));
+  }
+
+  get reviews(): Array<string> | null {
+    let value = this.get("reviews");
+    if (value === null || value.kind == ValueKind.NULL) {
+      return null;
+    } else {
+      return value.toStringArray();
+    }
+  }
+
+  set reviews(value: Array<string> | null) {
+    if (value === null) {
+      this.unset("reviews");
+    } else {
+      this.set("reviews", Value.fromStringArray(value as Array<string>));
+    }
+  }
+
+  get graduates(): Array<string> | null {
+    let value = this.get("graduates");
+    if (value === null || value.kind == ValueKind.NULL) {
+      return null;
+    } else {
+      return value.toStringArray();
+    }
+  }
+
+  set graduates(value: Array<string> | null) {
+    if (value === null) {
+      this.unset("graduates");
+    } else {
+      this.set("graduates", Value.fromStringArray(value as Array<string>));
+    }
+  }
+}
+
+export class Graduate extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(id !== null, "Cannot save Graduate entity without an ID");
+    assert(
+      id.kind == ValueKind.STRING,
+      "Cannot save Graduate entity with non-string ID. " +
+        'Considering using .toHex() to convert the "id" to a string.'
+    );
+    store.set("Graduate", id.toString(), this);
+  }
+
+  static load(id: string): Graduate | null {
+    return store.get("Graduate", id) as Graduate | null;
+  }
+
+  get id(): string {
+    let value = this.get("id");
+    return value.toString();
+  }
+
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get bootcampAddress(): Bytes {
+    let value = this.get("bootcampAddress");
+    return value.toBytes();
+  }
+
+  set bootcampAddress(value: Bytes) {
+    this.set("bootcampAddress", Value.fromBytes(value));
+  }
+
+  get courseId(): BigInt {
+    let value = this.get("courseId");
+    return value.toBigInt();
+  }
+
+  set courseId(value: BigInt) {
+    this.set("courseId", Value.fromBigInt(value));
+  }
+
+  get graduatedAt(): BigInt {
+    let value = this.get("graduatedAt");
+    return value.toBigInt();
+  }
+
+  set graduatedAt(value: BigInt) {
+    this.set("graduatedAt", Value.fromBigInt(value));
+  }
+
+  get uri(): string {
+    let value = this.get("uri");
+    return value.toString();
+  }
+
+  set uri(value: string) {
+    this.set("uri", Value.fromString(value));
+  }
+
+  get root(): Bytes {
+    let value = this.get("root");
+    return value.toBytes();
+  }
+
+  set root(value: Bytes) {
+    this.set("root", Value.fromBytes(value));
+  }
 }
 
 export class Review extends Entity {
