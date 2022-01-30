@@ -23,16 +23,12 @@ export class CourseCreated__Params {
     this._event = event;
   }
 
-  get bootcamp(): Address {
-    return this._event.parameters[0].value.toAddress();
-  }
-
   get courseId(): BigInt {
-    return this._event.parameters[1].value.toBigInt();
+    return this._event.parameters[0].value.toBigInt();
   }
 
   get courseURI(): string {
-    return this._event.parameters[2].value.toString();
+    return this._event.parameters[1].value.toString();
   }
 }
 
@@ -49,20 +45,16 @@ export class Graduate__Params {
     this._event = event;
   }
 
-  get bootcamp(): Address {
-    return this._event.parameters[0].value.toAddress();
-  }
-
   get courseId(): BigInt {
-    return this._event.parameters[1].value.toBigInt();
+    return this._event.parameters[0].value.toBigInt();
   }
 
   get merkleRoot(): Bytes {
-    return this._event.parameters[2].value.toBytes();
+    return this._event.parameters[1].value.toBytes();
   }
 
   get graduatesURI(): string {
-    return this._event.parameters[3].value.toString();
+    return this._event.parameters[2].value.toString();
   }
 }
 
@@ -101,20 +93,16 @@ export class Review__Params {
     this._event = event;
   }
 
-  get bootcamp(): Address {
+  get reviewer(): Address {
     return this._event.parameters[0].value.toAddress();
   }
 
-  get reviewer(): Address {
-    return this._event.parameters[1].value.toAddress();
-  }
-
   get courseId(): BigInt {
-    return this._event.parameters[2].value.toBigInt();
+    return this._event.parameters[1].value.toBigInt();
   }
 
   get reviewURI(): string {
-    return this._event.parameters[3].value.toString();
+    return this._event.parameters[2].value.toString();
   }
 }
 

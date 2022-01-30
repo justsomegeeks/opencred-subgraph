@@ -2,7 +2,7 @@ import {
   CourseCreated,
   Review as ReviewEvent,
   Graduate as GraduateEvent,
-} from "../generated/OpenCred/OpenCred";
+} from "../generated/templates/OpenCred/OpenCred";
 
 import { Review, Graduate, Course, Bootcamp } from "../generated/schema";
 
@@ -20,7 +20,7 @@ export function handleReview(event: ReviewEvent): void {
       event.params.courseId.toHex() +
       event.address.toHex()
   );
-  review.bootcampAddress = event.params.bootcamp;
+  review.bootcampAddress = event.address;
   review.uri = event.params.reviewURI;
   review.courseId = event.params.courseId;
   review.reviewer = event.params.reviewer;
@@ -39,11 +39,11 @@ export function handleGraduate(event: GraduateEvent): void {
   let graduate = new Graduate(
     event.params.courseId.toHex() +
       event.params.merkleRoot.toHex() +
-      event.params.bootcamp.toHex()
+      event.address.toHex()
   );
 
   graduate.courseId = event.params.courseId;
-  graduate.bootcampAddress = event.params.bootcamp;
+  graduate.bootcampAddress = event.address;
   graduate.root = event.params.merkleRoot;
   graduate.uri = event.params.graduatesURI;
   graduate.graduatedAt = event.block.timestamp;
@@ -56,7 +56,7 @@ export function handleGraduate(event: GraduateEvent): void {
 }
 
 export function handleCourseCreated(event: CourseCreated): void {
-  let bootcamp = Bootcamp.load(event.params.bootcamp.toHex());
+  let bootcamp = Bootcamp.load(event.address.toHex());
   let courses = bootcamp.courses;
 
   let course = new Course(
@@ -65,7 +65,7 @@ export function handleCourseCreated(event: CourseCreated): void {
 
   course.courseId = event.params.courseId;
   course.uri = event.params.courseURI;
-  course.bootcampAddress = event.params.bootcamp;
+  course.bootcampAddress = event.address;
   course.reviews = [];
   course.graduates = [];
   course.save();

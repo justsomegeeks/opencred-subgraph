@@ -31,26 +31,3 @@ type Graduate @entity {
   uri: String!
   root: Bytes!
 }
-type Review @entity {
-  id: ID!
-  reviewer: Bytes!
-  bootcampAddress: Bytes!
-  uri: String!
-  courseId: BigInt!
-}
-
-type Course @entity {
-  id: ID!
-  bootcampAddress: Bytes!
-  courseId: BigInt!
-  uri: String!
-}
-
-type Graduate @entity {
-  id: ID!
-  bootcampAddress: Bytes!
-  courseId: BigInt!
-  graduatedAt: BigInt!
-  uri: String!
-  root: Bytes!
-}

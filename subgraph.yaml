@@ -41,9 +41,9 @@ templates:
         - name: OpenCred
           file: ./abis/OpenCred.json
       eventHandlers:
-        - event: CourseCreated(indexed address,indexed uint256,string)
+        - event: CourseCreated(indexed uint256,string)
           handler: handleCourseCreated
-        - event: Graduate(indexed address,indexed uint256,bytes32,string)
+        - event: Graduate(indexed uint256,bytes32,string)
           handler: handleGraduate
-        - event: Review(indexed address,indexed address,indexed uint256,string)
+        - event: Review(indexed address,indexed uint256,string)
           handler: handleReview
