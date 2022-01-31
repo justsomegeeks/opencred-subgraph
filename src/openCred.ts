@@ -15,11 +15,19 @@ export function handleReview(event: ReviewEvent): void {
   let course = Course.load(
     event.address.toHex() + event.params.courseId.toHex()
   );
-  let review = new Review(
+  let review = Review.load(
     event.params.reviewer.toHex() +
       event.params.courseId.toHex() +
       event.address.toHex()
   );
+  if (review == null) {
+    review = new Review(
+      event.params.reviewer.toHex() +
+        event.params.courseId.toHex() +
+        event.address.toHex()
+    );
+  }
+
   review.bootcampAddress = event.address;
   review.uri = event.params.reviewURI;
   review.courseId = event.params.courseId;
